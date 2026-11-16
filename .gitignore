@@ -1,0 +1,14 @@
+# Only version app source and the sample catalog.
+/*
+!/.gitignore
+!/README.md
+!/Open PhotoLizard.html
+!/assets/
+/assets/*
+!/assets/archive-editor.js
+!/assets/gallery.css
+!/assets/gallery.js
+!/assets/yelling-lizard-logo.png
+!/sample/
+/sample/*
+!/sample/collection.js

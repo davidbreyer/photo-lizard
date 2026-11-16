@@ -1,0 +1,1 @@
+window.PHOTO_LIZARD_COLLECTION = {"photos":[{"id":"demo-photo","title":"Yelling Lizard","taken":"2024-01-01","caption":"Sample entry for the offline gallery.","src":"assets/yelling-lizard-logo.png","thumb":"assets/yelling-lizard-logo.png"}],"albums":[{"id":"sample","title":"Sample album","caption":"A demonstration collection.","cover":"demo-photo","photos":["demo-photo"]}]};

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file:; style-src 'self' file:; img-src 'self' file:; base-uri 'none'; form-action 'none'">
+  <title>PhotoLizard</title>
+  <link rel="icon" type="image/png" href="assets/yelling-lizard-logo.png">
+  <link rel="apple-touch-icon" href="assets/yelling-lizard-logo.png">
+  <link rel="stylesheet" href="assets/gallery.css">
+  <script defer src="assets/collection.js"></script>
+  <script defer src="assets/gallery.js"></script>
+  <script defer src="assets/archive-editor.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to photos</a>
+  <header class="masthead">
+    <div class="shell">
+      <div class="brand-lockup">
+        <img class="brand-logo" src="assets/yelling-lizard-logo.png" alt="" width="72" height="72">
+        <div>
+          <div class="brand-title">
+            <h1><a href="#albums">PhotoLizard</a></h1>
+            <span class="tool-symbol" aria-hidden="true">[•]</span>
+          </div>
+          <p id="summary" class="muted"></p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <nav id="navigation" aria-label="Browse archive">
+          <a href="#albums" data-view="albums">Albums</a>
+          <a href="#years" data-view="years">Years</a>
+          <a href="#photos" data-view="photos">All photos</a>
+          <a href="#removed" data-view="removed" hidden>Removed</a>
+        </nav>
+        <div class="archive-actions">
+          <form role="search" id="search-form">
+            <label class="visually-hidden" for="query">Search photos by title, caption, journal note, or date</label>
+            <input id="query" type="search" placeholder="Search the archive" autocomplete="off">
+            <button type="submit">Search</button>
+          </form>
+          <button id="add-photos" class="archive-button" type="button">Add photos</button>
+        </div>
+      </div>
+      <p id="gallery-status" class="edit-status" role="status" hidden></p>
+    </div>
+  </header>
+  <main class="shell" id="main" tabindex="-1">
+    <div id="content"></div>
+    <noscript>Enable JavaScript in your browser to browse the offline gallery. The image files are in the Photos by year folder beside this page.</noscript>
+  </main>
+  <dialog id="photo-dialog" aria-labelledby="photo-title">
+    <div class="dialog-tools">
+      <div class="dialog-arrows">
+        <button id="previous" type="button" aria-label="Previous photo">←</button>
+        <span id="position"></span>
+        <button id="next" type="button" aria-label="Next photo">→</button>
+      </div>
+      <div id="photo-versions" role="group" aria-label="Photo version" hidden>
+        <button id="show-original" type="button" aria-pressed="true">Original</button>
+        <button id="show-restored" type="button" aria-pressed="false">Restored</button>
+      </div>
+      <button id="close-photo" type="button" autofocus>Close</button>
+    </div>
+    <div class="dialog-body">
+      <div class="photo-stage"><img id="full-photo" alt=""></div>
+      <section class="photo-details" aria-live="polite">
+        <h2 id="photo-title"></h2>
+        <dl id="photo-dates"></dl>
+        <p id="photo-caption" class="caption"></p>
+        <p id="recovery-note" class="muted" hidden>Recovered preview of a damaged source file.</p>
+        <p id="restored-note" class="muted" hidden>AI-assisted restoration.</p>
+        <section id="photo-journal" aria-labelledby="journal-heading" hidden>
+          <h3 id="journal-heading">Journal note</h3>
+          <p id="journal-text" class="caption"></p>
+        </section>
+        <div id="photo-albums"></div>
+        <div class="photo-actions">
+          <a id="image-file" target="_blank" rel="noopener">Open image file ↗</a>
+          <button id="remove-or-restore" class="archive-button" type="button">Remove photo</button>
+        </div>
+        <p id="photo-status" class="edit-status" role="status" hidden></p>
+      </section>
+    </div>
+  </dialog>
+  <dialog id="import-dialog" aria-labelledby="import-title">
+    <form id="import-form">
+      <h2 id="import-title">Add photos</h2>
+      <fieldset id="import-fields">
+        <label for="import-files">Photo files</label>
+        <input id="import-files" type="file" accept=".jpg,.jpeg,.png,.webp,.gif,.avif" multiple required>
+        <p class="muted import-hint">JPEG, PNG, WebP, GIF, or AVIF</p>
+        <label for="import-album">Album</label>
+        <select id="import-album" name="album"></select>
+        <div id="import-photos"></div>
+        <div class="import-actions">
+          <button id="cancel-import" class="archive-button" type="button">Cancel</button>
+          <button id="save-import" class="archive-button primary" type="submit" disabled>Import photos</button>
+        </div>
+      </fieldset>
+      <p id="import-status" class="edit-status" role="status" hidden></p>
+    </form>
+  </dialog>
+</body>
+</html>
